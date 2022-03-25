@@ -1,19 +1,50 @@
-import React, { useState } from "react";
-import {  login } from "../services/services";
-import GlobalStateContext from "./GlobalStateContext";
+import React, { useState } from "react"
+import { createClasse, createModule, deleteClasse, deleteModule, editClasse, editModule, getClasseByModule, getModules, login } from "../services/services"
+import GlobalStateContext from "./GlobalStateContext"
 
 const GlobalState = (props) => {
     const [module, setModule] = useState([])
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")) || [])
     const [classe, setClasse] = useState([])
 
     const requestLogin = (body, navigate) => {
-        login(body, navigate, setUser)
+        login(body, navigate)
     }
 
-    const states = { user, module, classe }
-    const setters = { setUser, setModule, setClasse }
-    const requests = { requestLogin }
+    const requestGetModule = () =>{
+        getModules(setModule)
+    }
+
+    const requestCreateModule = (body) =>{
+        createModule(body)
+    }
+
+    const requestEditModule = (id, body) =>{
+        editModule(id, body)
+    }
+
+    const requestDeleteModule = (body) =>{
+        deleteModule(body)
+    }
+
+    const requestGetClasse = (id) =>{
+        getClasseByModule(id, setClasse)
+    }
+
+    const requestCreateClasse = (body) =>{
+        createClasse(body)
+    }
+
+    const requestEditClasse = (id, body) =>{
+        editClasse(id, body)
+    }
+
+    const requestDeleteClasse = (body) =>{
+        deleteClasse(body)
+    }
+
+    const states = { module, classe }
+    const setters = { setModule, setClasse }
+    const requests = { requestLogin, requestGetModule, requestCreateModule, requestEditModule, requestDeleteModule, requestGetClasse, requestCreateClasse, requestEditClasse, requestDeleteClasse}
 
     return (
         <GlobalStateContext.Provider value={{ states, setters, requests }}>

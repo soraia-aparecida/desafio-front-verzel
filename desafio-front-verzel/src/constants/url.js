@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://desafio-verzel-soraia.herokuapp.com'
+export const BASE_URL = 'https://desafio-verzel-soraia.herokuapp.com/'

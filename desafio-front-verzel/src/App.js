@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components'
 import Router from "./router/Router"
 import { ThemeProvider } from "@material-ui/core";
 import theme from "./constants/theme";
+import GlobalState from './context/GlobalState'
 
 const GlobalStyle = createGlobalStyle`
   
@@ -21,7 +22,9 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Router />
+      <GlobalState>
+        <Router />
+      </GlobalState>
     </ThemeProvider >
   );
 }

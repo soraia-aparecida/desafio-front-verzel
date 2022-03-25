@@ -1,21 +1,26 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Container, useStyles } from "./styled"
 import { TextField, IconButton, OutlinedInput, InputLabel, InputAdornment, FormControl, Button } from '@material-ui/core'
 import clsx from 'clsx'
 import { Visibility, VisibilityOff } from '@material-ui/icons';
-
+import useForm from '../../hooks/useForm'
+import GlobalStateContext from '../../context/GlobalStateContext'
+import {  useNavigate } from "react-router-dom"
 
 const LoginPage = () => {
 
+    const {requests} = useContext(GlobalStateContext) 
     const classes = useStyles();
+    const navigate = useNavigate()
+
     const [values, setValues] = React.useState({
-        amount: '',
-        password: '',
-        weight: '',
-        weightRange: '',
         showPassword: false,
     });
 
+    const [form, onChange]= useForm({
+        email:"",
+        password:""
+    })
 
     const handleClickShowPassword = () => {
         setValues({ ...values, showPassword: !values.showPassword });
@@ -25,16 +30,26 @@ const LoginPage = () => {
         event.preventDefault();
     };
 
+    const handleSubmit= (event) => {
+        event.preventDefault();
+        requests.requestLogin(form, navigate)
+    };
+
+   
+
     return (
         <Container>
             <h1>Login</h1>
-            <form className={classes.root} noValidate>
+            <form className={classes.root} noValidate onSubmit={handleSubmit}>
                 <TextField
                     type="email"
                     className={classes.margin}
                     label="E-mail"
                     variant="outlined"
                     required
+                    value={form.email}
+                    name='email'
+                    onChange={onChange}
 
                 />
                 <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
@@ -42,8 +57,9 @@ const LoginPage = () => {
                     <OutlinedInput
                         id="outlined-adornment-password"
                         type={values.showPassword ? 'text' : 'password'}
-                        value={values.password}
-                        onChange={'trocar pelo onChande do hook  Form'}
+                        value={form.password}
+                        name='password'
+                        onChange={onChange}
                         endAdornment={
                             <InputAdornment position="end">
                                 <IconButton

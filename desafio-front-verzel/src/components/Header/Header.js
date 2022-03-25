@@ -4,7 +4,7 @@ import { AppBar, Toolbar, Typography, Button } from '@material-ui/core'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { goToHome } from '../../router/coodinator'
 
-const Header = () => {
+const Header = (id) => {
     const classes = useStyles();
     const navigate = useNavigate()
     const location = useLocation()
@@ -57,7 +57,7 @@ const Header = () => {
         return <></>
     }
 
-    const changeHeader = (id) => {
+    const changeHeader = () => {
 
         switch (location.pathname) {
             case '/':

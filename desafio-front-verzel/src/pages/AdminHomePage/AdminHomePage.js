@@ -1,13 +1,36 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Container, useStyles } from "./styled"
 import { Button, Card, CardActions, CardContent, Typography } from '@material-ui/core'
 import { useNavigate } from "react-router-dom"
 import { goToClasseByModule, goToCreateClasse, goToCreateModule } from "../../router/coodinator"
+import GlobalStateContext from "../../context/GlobalStateContext"
+import { useRequestedModule } from "../../hooks/useRequestModule"
 
 const AdminHomePage = () => {
     const classes = useStyles()
     const navigate = useNavigate()
 
+    const { states, setters, requests } = useContext(GlobalStateContext)
+    const modulos = useRequestedModule()
+
+    const result = modulos.map((item) => {
+        return (
+            <Card className={classes.root2} key={item.id}>
+                <CardContent >
+                    <Typography gutterBottom variant="h5" >
+                        {item.name}
+                    </Typography>
+                </CardContent>
+                <CardActions className={classes.cardButton} flexGrow={1}>
+                    <Button size="small" >Aulas</Button>
+                    <Button size="small" >Editar</Button>
+                    <Button size="small" >Excluir  </Button>
+                </CardActions>
+
+            </Card>
+        )
+    })
+  
     return (
         <Container >
             <h1>Painel Admintrativo</h1>
@@ -20,93 +43,9 @@ const AdminHomePage = () => {
 
             <h2>Módulos disponíveis</h2>
             <section>
-                <Card className={classes.root2}>
-                    <CardContent >
-                        <Typography gutterBottom variant="h5" >
-                            Lizard
-                        </Typography>
-                    </CardContent>
-                    <CardActions className={classes.cardButton} flexGrow={1}>
-                        <Button size="small" onClick={() => goToClasseByModule(navigate, 1)}>Aulas</Button>
-                        <Button size="small" >Editar</Button>
-                        <Button size="small" >Excluir  </Button>
-                    </CardActions>
-
-                </Card>
-
-                <Card className={classes.root2}>
-                    <CardContent >
-                        <Typography gutterBottom variant="h5" >
-                            Lizard
-                        </Typography>
-                    </CardContent>
-                    <CardActions className={classes.cardButton} flexGrow={1}>
-                        <Button size="small" >Aulas</Button>
-                        <Button size="small" >Editar</Button>
-                        <Button size="small" >Excluir  </Button>
-                    </CardActions>
-
-                </Card>
-
-
-                <Card className={classes.root2}>
-                    <CardContent >
-                        <Typography gutterBottom variant="h5" >
-                            Lizard
-                        </Typography>
-                    </CardContent>
-                    <CardActions className={classes.cardButton} flexGrow={1}>
-                        <Button size="small" >Aulas</Button>
-                        <Button size="small" >Editar</Button>
-                        <Button size="small" >Excluir  </Button>
-                    </CardActions>
-
-                </Card>
-
-                <Card className={classes.root2}>
-                    <CardContent >
-                        <Typography gutterBottom variant="h5" >
-                            Lizard
-                        </Typography>
-                    </CardContent>
-                    <CardActions className={classes.cardButton} flexGrow={1}>
-                        <Button size="small" >Aulas</Button>
-                        <Button size="small" >Editar</Button>
-                        <Button size="small" >Excluir  </Button>
-                    </CardActions>
-
-                </Card>
-
-
-                <Card className={classes.root2}>
-                    <CardContent >
-                        <Typography gutterBottom variant="h5" >
-                            Lizard
-                        </Typography>
-                    </CardContent>
-                    <CardActions className={classes.cardButton} flexGrow={1}>
-                        <Button size="small" >Aulas</Button>
-                        <Button size="small" >Editar</Button>
-                        <Button size="small" >Excluir  </Button>
-                    </CardActions>
-
-                </Card>
-
-
-                <Card className={classes.root2}>
-                    <CardContent >
-                        <Typography gutterBottom variant="h5" >
-                            Lizard
-                        </Typography>
-                    </CardContent>
-                    <CardActions className={classes.cardButton} flexGrow={1}>
-                        <Button size="small" >Aulas</Button>
-                        <Button size="small" >Editar</Button>
-                        <Button size="small" >Excluir  </Button>
-                    </CardActions>
-
-                </Card>
+                {result}
             </section>
+
         </Container >
     )
 }
