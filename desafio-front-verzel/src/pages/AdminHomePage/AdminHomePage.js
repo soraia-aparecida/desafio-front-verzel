@@ -1,9 +1,12 @@
 import React from "react"
 import { Container, useStyles } from "./styled"
 import { Button, Card, CardActions, CardContent, Typography } from '@material-ui/core'
+import { useNavigate } from "react-router-dom"
+import { goToClasseByModule, goToCreateClasse, goToCreateModule } from "../../router/coodinator"
 
 const AdminHomePage = () => {
     const classes = useStyles()
+    const navigate = useNavigate()
 
     return (
         <Container >
@@ -11,24 +14,99 @@ const AdminHomePage = () => {
 
             <div className={classes.root}>
 
-                <Button variant="outlined" color="primary">Cadastrar novo módulo</Button>
-                <Button variant="outlined" color="primary"> Cadastrar nova aula </Button>
+                <Button variant="outlined" color="primary" onClick={() => goToCreateModule(navigate)}>Cadastrar novo módulo</Button>
+                <Button variant="outlined" color="primary" onClick={() => goToCreateClasse(navigate)}> Cadastrar nova aula </Button>
             </div>
 
             <h2>Módulos disponíveis</h2>
-            <Card className={classes.root2}>
-                <CardContent >
-                    <Typography gutterBottom variant="h5" >
-                        Lizard
-                    </Typography>
-                </CardContent>
-                <CardActions className={classes.cardButton} flexGrow={1}>
-                    <Button size="small" color="primary">Aulas</Button>
-                    <Button size="small" color="primary">Editar</Button>
-                    <Button size="small" color="primary">Excluir  </Button>
-                </CardActions>
-            </Card>
+            <section>
+                <Card className={classes.root2}>
+                    <CardContent >
+                        <Typography gutterBottom variant="h5" >
+                            Lizard
+                        </Typography>
+                    </CardContent>
+                    <CardActions className={classes.cardButton} flexGrow={1}>
+                        <Button size="small" onClick={() => goToClasseByModule(navigate, 1)}>Aulas</Button>
+                        <Button size="small" >Editar</Button>
+                        <Button size="small" >Excluir  </Button>
+                    </CardActions>
 
+                </Card>
+
+                <Card className={classes.root2}>
+                    <CardContent >
+                        <Typography gutterBottom variant="h5" >
+                            Lizard
+                        </Typography>
+                    </CardContent>
+                    <CardActions className={classes.cardButton} flexGrow={1}>
+                        <Button size="small" >Aulas</Button>
+                        <Button size="small" >Editar</Button>
+                        <Button size="small" >Excluir  </Button>
+                    </CardActions>
+
+                </Card>
+
+
+                <Card className={classes.root2}>
+                    <CardContent >
+                        <Typography gutterBottom variant="h5" >
+                            Lizard
+                        </Typography>
+                    </CardContent>
+                    <CardActions className={classes.cardButton} flexGrow={1}>
+                        <Button size="small" >Aulas</Button>
+                        <Button size="small" >Editar</Button>
+                        <Button size="small" >Excluir  </Button>
+                    </CardActions>
+
+                </Card>
+
+                <Card className={classes.root2}>
+                    <CardContent >
+                        <Typography gutterBottom variant="h5" >
+                            Lizard
+                        </Typography>
+                    </CardContent>
+                    <CardActions className={classes.cardButton} flexGrow={1}>
+                        <Button size="small" >Aulas</Button>
+                        <Button size="small" >Editar</Button>
+                        <Button size="small" >Excluir  </Button>
+                    </CardActions>
+
+                </Card>
+
+
+                <Card className={classes.root2}>
+                    <CardContent >
+                        <Typography gutterBottom variant="h5" >
+                            Lizard
+                        </Typography>
+                    </CardContent>
+                    <CardActions className={classes.cardButton} flexGrow={1}>
+                        <Button size="small" >Aulas</Button>
+                        <Button size="small" >Editar</Button>
+                        <Button size="small" >Excluir  </Button>
+                    </CardActions>
+
+                </Card>
+
+
+                <Card className={classes.root2}>
+                    <CardContent >
+                        <Typography gutterBottom variant="h5" >
+                            Lizard
+                        </Typography>
+                    </CardContent>
+                    <CardActions className={classes.cardButton} flexGrow={1}>
+                        <Button size="small" >Aulas</Button>
+                        <Button size="small" >Editar</Button>
+                        <Button size="small" >Excluir  </Button>
+                    </CardActions>
+
+                </Card>
+            </section>
         </Container >
     )
 }

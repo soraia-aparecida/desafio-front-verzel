@@ -21,7 +21,7 @@ const Router = () => {
                 <Route path={"/admin"} element={<AdminHomePage />} />
                 <Route path={"/cadastrar-modulo"} element={<CreateModulePage />} />
                 <Route path={"/cadastrar-aula"} element={<CreateClassPage />} /> 
-                <Route path={`/aulas/:id`} element={<ClassePage />} /> 
+                <Route path={`/aula/:id`} element={<ClassePage />} /> 
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
         </BrowserRouter>

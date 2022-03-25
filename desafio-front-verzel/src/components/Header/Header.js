@@ -70,7 +70,7 @@ const Header = () => {
                 return loginHeader();
             case '/admin':
                 return adminHeader();
-            case `/aulas/${id}`:
+            case `/aula/${id}`:
                 return adminHeader();
             default:
                 return notPage()

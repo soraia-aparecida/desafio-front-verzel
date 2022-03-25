@@ -1,13 +1,12 @@
-import React from "react";
+import React from "react"
 import { Container, useStyles } from "./styled"
-import { TextField, Button, FormControl } from '@material-ui/core'
-
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
+import { TextField, Button, FormControl, InputLabel, MenuItem, Select } from '@material-ui/core'
+import { goToAdminHome } from "../../router/coodinator"
+import { useNavigate } from "react-router-dom"
 
 const CreateClassPage = () => {
-    const classes = useStyles();
+    const classes = useStyles()
+    const navigate = useNavigate()
 
 
     const [modulo, setModulo] = React.useState('');
@@ -55,7 +54,7 @@ const CreateClassPage = () => {
                 />
                 <Button variant="contained" color="primary" className={classes.withoutLabel} type="submit"> Casdastrar </Button>
             </form>
-            <Button color="primary">Voltar</Button>
+            <Button color="primary" onClick={() => goToAdminHome(navigate)}>Voltar</Button>
         </Container>
     )
 }

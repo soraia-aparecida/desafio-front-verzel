@@ -12,10 +12,14 @@ export const goToAdminHome = (history) => {
 }
 
 export const goToCreateModule= (history) => {
-    history("/admin-criar-modulo")
+    history("/cadastrar-modulo")
 }
 
 export const goToCreateClasse= (history) => {
-    history("/admin-criar-aula")
+    history("/cadastrar-aula")
+}
+
+export const goToClasseByModule= (history, id) => {
+    history(`/aula/${id}`)
 }
 
