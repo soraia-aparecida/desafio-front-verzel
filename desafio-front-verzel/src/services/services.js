@@ -30,15 +30,14 @@ export const getModules = (setState) => {
 //REQUISIÇÃO PARA CADASTRAR NOVO MÓDULO
 export const createModule = (body) => {
 
-    const token = localStorage.getItem('token')
     const url = BASE_URL + 'module/add'
     const request = axios.post(url, body, {
         headers: {
-            auth: token
+            Authorization: localStorage.getItem('token')
         }
     })
-
     request.then((res) => {
+        alert(res.data.message)
     }).catch((err) => {
         alert(err.response.data)
     })
@@ -64,16 +63,19 @@ export const editModule = (id, body) => {
 
 //REQUISIÇÃO PARA DELETAR MÓDULO
 export const deleteModule = (body) => {
-
-    const token = localStorage.getItem('token')
+    const id = { "id": body }
     const url = BASE_URL + `module/delete`
-    const request = axios.delete(url, body, {
+    const request = axios.delete(url, id, {
         headers: {
-            auth: token
+            Authorization: localStorage.getItem('token')
         }
     })
 
+    console.log("oi", localStorage.getItem('token'))
+    console.log("id", id)
+    
     request.then((res) => {
+        alert(res.data.message)
     }).catch((err) => {
         alert(err.response.data)
     })

@@ -21,10 +21,10 @@ const AdminHomePage = () => {
                         {item.name}
                     </Typography>
                 </CardContent>
-                <CardActions className={classes.cardButton} flexGrow={1}>
-                    <Button size="small" >Aulas</Button>
+                <CardActions className={classes.cardButton} >
+                    <Button size="small" onClick={() => goToClasseByModule(navigate, item.id)}>Aulas</Button>
                     <Button size="small" >Editar</Button>
-                    <Button size="small" >Excluir  </Button>
+                    <Button size="small" onClick={() => requests.requestDeleteModule(item.id)}>Excluir  </Button>
                 </CardActions>
 
             </Card>
@@ -36,7 +36,6 @@ const AdminHomePage = () => {
             <h1>Painel Admintrativo</h1>
 
             <div className={classes.root}>
-
                 <Button variant="outlined" color="primary" onClick={() => goToCreateModule(navigate)}>Cadastrar novo módulo</Button>
                 <Button variant="outlined" color="primary" onClick={() => goToCreateClasse(navigate)}> Cadastrar nova aula </Button>
             </div>

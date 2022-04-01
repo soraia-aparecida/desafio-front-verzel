@@ -1,13 +1,19 @@
 import React from 'react'
 import { useStyles } from './styled'
 import { AppBar, Toolbar, Typography, Button } from '@material-ui/core'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { goToHome } from '../../router/coodinator'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { goToHome, goToLogin } from '../../router/coodinator'
 
 const Header = (id) => {
     const classes = useStyles();
     const navigate = useNavigate()
     const location = useLocation()
+
+    
+    const logout = () => {
+        localStorage.removeItem('token')
+        goToLogin(navigate)
+    }
 
     const homeHeader = () => {
         return (
@@ -32,7 +38,7 @@ const Header = (id) => {
                         <Typography variant="h4" className={classes.title} onClick={() => goToHome(navigate)}>
                             EmpresaX
                         </Typography>
-                        <Button color="inherit">Logout</Button>
+                        <Button color="inherit" onClick={logout}>Logout</Button>
                     </Toolbar>
                 </AppBar>
             </div>
@@ -69,8 +75,6 @@ const Header = (id) => {
             case '/entrar':
                 return loginHeader();
             case '/admin':
-                return adminHeader();
-            case `/aula/${id}`:
                 return adminHeader();
             default:
                 return notPage()

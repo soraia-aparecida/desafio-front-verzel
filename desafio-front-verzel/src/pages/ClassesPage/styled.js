@@ -5,6 +5,10 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
+    header{
+        width: 100%;
+        margin-top: -1.5vh;
+    }
     h1{
         margin-top: 5vh;
         margin-bottom: 3vh;
