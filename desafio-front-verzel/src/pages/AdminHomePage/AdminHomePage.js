@@ -15,7 +15,7 @@ const AdminHomePage = () => {
 
     const { states, setters, requests } = useContext(GlobalStateContext)
     const modulos = useRequestedModule()
-    console.log(modulos)
+    // console.log(modulos)
 
     const result = modulos.map((item) => {
         return (
@@ -30,11 +30,10 @@ const AdminHomePage = () => {
                     <Button size="small" >Editar</Button>
                     <Button size="small" onClick={() => requests.requestDeleteModule(item.id)}>Excluir  </Button>
                 </CardActions>
-
             </Card>
         )
     })
-  
+
     return (
         <Container >
             <h1>Painel Admintrativo</h1>
@@ -48,7 +47,6 @@ const AdminHomePage = () => {
             <section>
                 {result}
             </section>
-
         </Container >
     )
 }

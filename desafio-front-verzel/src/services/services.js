@@ -104,12 +104,15 @@ export const createClasse = (body) => {
         moduleId: body.moduleId
     }
 
-    console.log(newBody)
     const url = BASE_URL + `classe/add`
-    const request = axios.get(url, newBody)
+    const request = axios.post(url, newBody, {
+        headers: {
+            Authorization: localStorage.getItem('token')
+        }
+    })
 
     request.then((res) => {
-        console.log(res.data)
+        alert(res.data.message)
     }).catch((err) => {
         console.log(err.response)
         alert(err.response.data)

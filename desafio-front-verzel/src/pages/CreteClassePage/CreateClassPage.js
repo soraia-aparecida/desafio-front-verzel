@@ -35,7 +35,6 @@ const CreateClassPage = () => {
         cleanFields()
     };
 
-    // Ele recebe todos os dados corretamente, mas não aceita o módulo para cadastrar nova aula...
     return (
         <Container>
             <h1>Castrar nova aula</h1>
