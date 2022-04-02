@@ -5,8 +5,11 @@ import { goToAdminHome } from "../../router/coodinator"
 import { useNavigate } from "react-router-dom"
 import useForm from '../../hooks/useForm'
 import GlobalStateContext from "../../context/GlobalStateContext"
+import { useProtectedPage } from "../../hooks/useProtectedPage"
 
 const CreateModulePage = () => {
+    useProtectedPage()
+    
     const { requests } = useContext(GlobalStateContext)
 
     const [form, onChange, cleanFields] = useForm({

@@ -6,8 +6,11 @@ import { useNavigate, useParams } from "react-router-dom"
 import Header2 from "../../components/Header/Header2"
 import GlobalStateContext from "../../context/GlobalStateContext"
 import { useRequestedModule } from "../../hooks/useRequestModule"
+import { useProtectedPage } from "../../hooks/useProtectedPage"
 
 const ClassePage = () => {
+    useProtectedPage()
+    
     const classes = useStyles()
     const navigate = useNavigate()
 

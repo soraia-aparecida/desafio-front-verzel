@@ -2,7 +2,7 @@ import React from 'react'
 import { useStyles } from './styled'
 import { AppBar, Toolbar, Typography, Button } from '@material-ui/core'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
-import { goToHome, goToLogin } from '../../router/coodinator'
+import { goToAdminHome, goToHome, goToLogin } from '../../router/coodinator'
 
 const Header = (id) => {
     const classes = useStyles();
@@ -23,7 +23,7 @@ const Header = (id) => {
                         <Typography variant="h4" className={classes.title} onClick={() => goToHome(navigate)}>
                             EmpresaX
                         </Typography>
-                        <Button color="inherit">Área Admin</Button>
+                        <Button color="inherit" onClick={() =>goToAdminHome(navigate)}>Área Admin</Button>
                     </Toolbar>
                 </AppBar>
             </div>

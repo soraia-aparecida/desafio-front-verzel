@@ -5,8 +5,11 @@ import { useNavigate } from "react-router-dom"
 import { goToClasseByModule, goToCreateClasse, goToCreateModule } from "../../router/coodinator"
 import GlobalStateContext from "../../context/GlobalStateContext"
 import { useRequestedModule } from "../../hooks/useRequestModule"
+import { useProtectedPage } from "../../hooks/useProtectedPage"
 
 const AdminHomePage = () => {
+    useProtectedPage()
+    
     const classes = useStyles()
     const navigate = useNavigate()
 

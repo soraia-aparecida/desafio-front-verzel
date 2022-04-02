@@ -4,27 +4,48 @@ import { TextField, Button, FormControl, InputLabel, MenuItem, Select } from '@m
 import { goToAdminHome } from "../../router/coodinator"
 import { useNavigate } from "react-router-dom"
 import { useRequestedModule } from "../../hooks/useRequestModule"
+import useForm from '../../hooks/useForm'
+import { useProtectedPage } from "../../hooks/useProtectedPage"
 
 const CreateClassPage = () => {
+    useProtectedPage()
+    
     const classes = useStyles()
     const navigate = useNavigate()
 
     const modulos = useRequestedModule()
     console.log(modulos)
 
- 
+    const [form, onChange, cleanFields] = useForm({
+        name: "",
+        date: "",
+        moduleId: ""
+    })
+
+
+    const mapModule = modulos.map((item) => {
+        return (
+            <MenuItem value={item.id} key={item.id}>{item.name}</MenuItem>
+     )
+    })
     const [modulo, setModulo] = React.useState('');
 
     const handleChange = (event) => {
+        event.preventDefault();
         setModulo(event.target.value);
     };
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     requests.requestCreateModule(form)
+    //     cleanFields()
+    // };
 
     return (
         <Container>
             <h1>Castrar nova aula</h1>
             <form className={classes.root} noValidate>
 
-            <FormControl variant="outlined" className={classes.margin}>
+                <FormControl variant="outlined" className={classes.margin}>
                     <InputLabel id="demo-simple-select-outlined-label">Módulo</InputLabel>
                     <Select
                         labelId="demo-simple-select-outlined-label"
@@ -36,9 +57,7 @@ const CreateClassPage = () => {
                         <MenuItem value="">
                             <em>None</em>
                         </MenuItem>
-                        <MenuItem value={10}>Ten</MenuItem>
-                        <MenuItem value={20}>Twenty</MenuItem>
-                        <MenuItem value={30}>Thirty</MenuItem>
+                       {mapModule}
                     </Select>
                 </FormControl>
 

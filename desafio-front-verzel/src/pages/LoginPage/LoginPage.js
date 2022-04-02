@@ -6,8 +6,10 @@ import { Visibility, VisibilityOff } from '@material-ui/icons';
 import useForm from '../../hooks/useForm'
 import GlobalStateContext from '../../context/GlobalStateContext'
 import {  useNavigate } from "react-router-dom"
+import { useUnprotectedPage } from "../../hooks/useUnProtectedPage";
 
 const LoginPage = () => {
+    useUnprotectedPage()
 
     const {requests} = useContext(GlobalStateContext) 
     const classes = useStyles();
