@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Container, useStyles } from "./styled"
 import { Button, Card, CardActions, CardContent, Typography } from '@material-ui/core'
 import { goToAdminHome } from "../../router/coodinator"
@@ -17,13 +17,32 @@ const ClassePage = () => {
     const { states, setters, requests } = useContext(GlobalStateContext)
     const modulos = useRequestedModule()
 
-    const filterModule = modulos.filter((item) =>{
-       return item.id == id
+    const filterModule = modulos.filter((item) => {
+        return item.id == id
     })
 
-    console.log(filterModule)
+    useEffect(() => {
+        setters.setClasse(requests.requestGetClasse(id))
+    }, [])
+
+    const mapClasse = states.classe?.map((item) => {
+        return (
+            <Card className={classes.root2} key={item.id}>
+                <CardContent >
+                    <Typography gutterBottom variant="h5" >
+                        {item.name}
+                    </Typography>
+                    <p>Disponível em: {item.classDate}</p>
+                </CardContent>
+                <CardActions className={classes.cardButton} >
+                    <Button size="small" >Editar</Button>
+                    <Button size="small" >Excluir  </Button>
+                </CardActions>
+            </Card>
+        )
+    })
+
     const name = filterModule[0]?.name
-    console.log(name)
 
     return (
         <Container >
@@ -34,96 +53,7 @@ const ClassePage = () => {
 
             <h2>Aulas disponíveis</h2>
             <section>
-                <Card className={classes.root2}>
-                    <CardContent >
-                        <Typography gutterBottom variant="h5" >
-                            Lizard
-                        </Typography>
-                        <p>Disponível em: 30/08/2022</p>
-                    </CardContent>
-                    <CardActions className={classes.cardButton} >
-                        <Button size="small" >Editar</Button>
-                        <Button size="small" >Excluir  </Button>
-                    </CardActions>
-                </Card>
-
-                <Card className={classes.root2}>
-                    <CardContent >
-                        <Typography gutterBottom variant="h5" >
-                            Lizard
-                        </Typography>
-                        <p>Disponível em: 30/08/2022</p>
-                    </CardContent>
-                    <CardActions className={classes.cardButton} >
-                        <Button size="small" >Editar</Button>
-                        <Button size="small" >Excluir  </Button>
-                    </CardActions>
-                </Card>
-
-                <Card className={classes.root2}>
-                    <CardContent >
-                        <Typography gutterBottom variant="h5" >
-                            Lizard
-                        </Typography>
-                        <p>Disponível em: 30/08/2022</p>
-                    </CardContent>
-                    <CardActions className={classes.cardButton} >
-                        <Button size="small" >Editar</Button>
-                        <Button size="small" >Excluir  </Button>
-                    </CardActions>
-                </Card>
-
-                <Card className={classes.root2}>
-                    <CardContent >
-                        <Typography gutterBottom variant="h5" >
-                            Lizard
-                        </Typography>
-                        <p>Disponível em: 30/08/2022</p>
-                    </CardContent>
-                    <CardActions className={classes.cardButton} >
-                        <Button size="small" >Editar</Button>
-                        <Button size="small" >Excluir  </Button>
-                    </CardActions>
-                </Card>
-
-                <Card className={classes.root2}>
-                    <CardContent >
-                        <Typography gutterBottom variant="h5" >
-                            Lizard
-                        </Typography>
-                        <p>Disponível em: 30/08/2022</p>
-                    </CardContent>
-                    <CardActions className={classes.cardButton} >
-                        <Button size="small" >Editar</Button>
-                        <Button size="small" >Excluir  </Button>
-                    </CardActions>
-                </Card>
-
-                <Card className={classes.root2}>
-                    <CardContent >
-                        <Typography gutterBottom variant="h5" >
-                            Lizard
-                        </Typography>
-                        <p>Disponível em: 30/08/2022</p>
-                    </CardContent>
-                    <CardActions className={classes.cardButton} >
-                        <Button size="small" >Editar</Button>
-                        <Button size="small" >Excluir  </Button>
-                    </CardActions>
-                </Card>
-
-                <Card className={classes.root2}>
-                    <CardContent >
-                        <Typography gutterBottom variant="h5" >
-                            Lizard
-                        </Typography>
-                        <p>Disponível em: 30/08/2022</p>
-                    </CardContent>
-                    <CardActions className={classes.cardButton} >
-                        <Button size="small" >Editar</Button>
-                        <Button size="small" >Excluir  </Button>
-                    </CardActions>
-                </Card>
+                {mapClasse}
             </section>
             <Button color="primary" onClick={() => goToAdminHome(navigate)}>Voltar</Button>
         </Container >

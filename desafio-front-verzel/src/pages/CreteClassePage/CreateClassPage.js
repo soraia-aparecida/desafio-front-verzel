@@ -3,12 +3,16 @@ import { Container, useStyles } from "./styled"
 import { TextField, Button, FormControl, InputLabel, MenuItem, Select } from '@material-ui/core'
 import { goToAdminHome } from "../../router/coodinator"
 import { useNavigate } from "react-router-dom"
+import { useRequestedModule } from "../../hooks/useRequestModule"
 
 const CreateClassPage = () => {
     const classes = useStyles()
     const navigate = useNavigate()
 
+    const modulos = useRequestedModule()
+    console.log(modulos)
 
+ 
     const [modulo, setModulo] = React.useState('');
 
     const handleChange = (event) => {

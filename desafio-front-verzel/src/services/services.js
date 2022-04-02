@@ -73,7 +73,7 @@ export const deleteModule = (body) => {
 
     console.log("oi", localStorage.getItem('token'))
     console.log("id", id)
-    
+
     request.then((res) => {
         alert(res.data.message)
     }).catch((err) => {
@@ -82,12 +82,12 @@ export const deleteModule = (body) => {
 }
 
 //REQUISIÇÃO PARA PEGAR TODOS AS AULAS DE UM MÓDULOS
-export const getClasseByModule = (id, setState) => {
+export const getClasseByModule = (id, setClasse) => {
     const url = BASE_URL + `classe/${id}`
     const request = axios.get(url)
 
     request.then((res) => {
-        setState(res.data.classes)
+        setClasse(res.data.classes)
 
     }).catch((err) => {
         alert(err.response.data)
