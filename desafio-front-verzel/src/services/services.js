@@ -1,5 +1,6 @@
 import axios from "axios";
 import { BASE_URL } from '../constants/url'
+import { corretDate } from "./correctDate";
 
 // REQUISIÇÃO PARA LOGAR
 export const login = (body, navigate) => {
@@ -96,11 +97,21 @@ export const getClasseByModule = (id, setClasse) => {
 
 //REQUISIÇÃO PARA CADASTRAR NOVAS AULAS
 export const createClasse = (body) => {
+
+    const newBody = {
+        name: body.name,
+        classDate: corretDate(body.classDate),
+        moduleId: body.moduleId
+    }
+
+    console.log(newBody)
     const url = BASE_URL + `classe/add`
-    const request = axios.get(url, body)
+    const request = axios.get(url, newBody)
 
     request.then((res) => {
+        console.log(res.data)
     }).catch((err) => {
+        console.log(err.response)
         alert(err.response.data)
     })
 }

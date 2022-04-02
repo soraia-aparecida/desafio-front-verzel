@@ -9,12 +9,13 @@ import { useProtectedPage } from "../../hooks/useProtectedPage"
 
 const AdminHomePage = () => {
     useProtectedPage()
-    
+
     const classes = useStyles()
     const navigate = useNavigate()
 
     const { states, setters, requests } = useContext(GlobalStateContext)
     const modulos = useRequestedModule()
+    console.log(modulos)
 
     const result = modulos.map((item) => {
         return (
