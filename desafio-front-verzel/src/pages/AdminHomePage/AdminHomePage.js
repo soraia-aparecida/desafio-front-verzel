@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import { Container, useStyles } from "./styled"
 import { Button, Card, CardActions, CardContent, Typography } from '@material-ui/core'
 import { useNavigate } from "react-router-dom"
-import { goToClasseByModule, goToCreateClasse, goToCreateModule } from "../../router/coodinator"
+import { goToClasseByModule, goToCreateClasse, goToCreateModule, editModule } from "../../router/coodinator"
 import GlobalStateContext from "../../context/GlobalStateContext"
 import { useRequestedModule } from "../../hooks/useRequestModule"
 import { useProtectedPage } from "../../hooks/useProtectedPage"
@@ -15,7 +15,6 @@ const AdminHomePage = () => {
 
     const { states, setters, requests } = useContext(GlobalStateContext)
     const modulos = useRequestedModule()
-    // console.log(modulos)
 
     const result = modulos.map((item) => {
         return (
@@ -27,7 +26,7 @@ const AdminHomePage = () => {
                 </CardContent>
                 <CardActions className={classes.cardButton} >
                     <Button size="small" onClick={() => goToClasseByModule(navigate, item.id)}>Aulas</Button>
-                    <Button size="small" >Editar</Button>
+                    <Button size="small" onClick={() => editModule(navigate, item.id)}>Editar</Button>
                     <Button size="small" onClick={() => requests.requestDeleteModule(item.id)}>Excluir  </Button>
                 </CardActions>
             </Card>

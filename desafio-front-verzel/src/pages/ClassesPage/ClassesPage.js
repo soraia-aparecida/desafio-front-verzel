@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect } from "react"
 import { Container, useStyles } from "./styled"
 import { Button, Card, CardActions, CardContent, Typography } from '@material-ui/core'
 import { goToAdminHome } from "../../router/coodinator"
@@ -10,7 +10,7 @@ import { useProtectedPage } from "../../hooks/useProtectedPage"
 
 const ClassePage = () => {
     useProtectedPage()
-    
+
     const classes = useStyles()
     const navigate = useNavigate()
 
@@ -39,7 +39,9 @@ const ClassePage = () => {
                 </CardContent>
                 <CardActions className={classes.cardButton} >
                     <Button size="small" >Editar</Button>
-                    <Button size="small" >Excluir  </Button>
+
+                    {/* Ele não deixa exluir uma aula, diz que não estou passando o headers de autorização */}
+                    <Button size="small" onClick={() => requests.requestDeleteClasse(item.id)}>Excluir  </Button>
                 </CardActions>
             </Card>
         )

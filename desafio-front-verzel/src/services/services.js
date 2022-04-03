@@ -24,7 +24,8 @@ export const getModules = (setState) => {
         setState(res.data.modules)
 
     }).catch((err) => {
-        alert(err.response.data)
+        // alert(err.response.data)
+        console.log("oi")
     })
 }
 
@@ -47,16 +48,16 @@ export const createModule = (body) => {
 
 //REQUISIÇÃO PARA EDITAR MÓDULO
 export const editModule = (id, body) => {
-
-    const token = localStorage.getItem('token')
+    
     const url = BASE_URL + `module/edit/${id}`
     const request = axios.put(url, body, {
         headers: {
-            auth: token
+            Authorization: localStorage.getItem('token')
         }
     })
 
     request.then((res) => {
+        alert(res.data.message)
     }).catch((err) => {
         alert(err.response.data)
     })
@@ -91,7 +92,7 @@ export const getClasseByModule = (id, setClasse) => {
         setClasse(res.data.classes)
 
     }).catch((err) => {
-        alert(err.response.data)
+        alert(err.response)
     })
 }
 
@@ -114,7 +115,6 @@ export const createClasse = (body) => {
     request.then((res) => {
         alert(res.data.message)
     }).catch((err) => {
-        console.log(err.response)
         alert(err.response.data)
     })
 }
@@ -131,6 +131,7 @@ export const editClasse = (id, body) => {
     })
 
     request.then((res) => {
+        alert(res.data.message)
     }).catch((err) => {
         alert(err.response.data)
     })
@@ -139,15 +140,17 @@ export const editClasse = (id, body) => {
 //REQUISIÇÃO PARA DELETAR AULA
 export const deleteClasse = (body) => {
 
-    const token = localStorage.getItem('token')
+    const newBody = {id: body}
+
     const url = BASE_URL + `classe/delete`
-    const request = axios.delete(url, body, {
+    const request = axios.delete(url, newBody, {
         headers: {
-            auth: token
+            Authorization: localStorage.getItem('token')
         }
     })
 
     request.then((res) => {
+        alert(res.data.message)
     }).catch((err) => {
         alert(err.response.data)
     })

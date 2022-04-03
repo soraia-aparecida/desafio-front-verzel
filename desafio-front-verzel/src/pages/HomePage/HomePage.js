@@ -1,119 +1,89 @@
-import React from "react"
-import { Container, useStyles, useStyles2 } from "./styled"
-import clsx from 'clsx'
+import React, { useContext, useEffect } from "react"
+import { Container, useStyles } from "./styled"
 import { Card, CardHeader, CardContent, CardActions, Collapse, Avatar, IconButton, Typography, List, ListItem, Divider, ListItemText } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import GlobalStateContext from "../../context/GlobalStateContext"
+import { useRequestedModule } from "../../hooks/useRequestModule"
+
+
+// import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+// import ImageIcon from '@material-ui/icons/Image';
 
 const HomePage = () => {
 
-    const classes = useStyles()
-    const classes2 = useStyles2()
+    const { states, setters, requests } = useContext(GlobalStateContext)
+    const modulos = useRequestedModule()
 
-    const [expanded, setExpanded] = React.useState(false)
-    const handleExpandClick = () => {
-        setExpanded(!expanded)
-    }
-
-    const modulos = [
-        {
-            id: "1",
-            name: "Modulo 1",
-        },
-        {
-            id: "2",
-            name: "Modulo 2",
+    useEffect(()=> {
+        for (let i = 0; i < modulos.length; i++) {
+            requests.requestGetClasse(modulos[i].id)
+            // console.log(modulos[i].id)
         }
-    ]
+        // console.log(states.classe)
+    }, [])
 
-    const aulas = [{
-        id: "asasas",
-        name: "aula 1",
-        date: '25/10/2022',
-        idModule: "1"
-    },
-    {
-        id: "awwawaw",
-        name: "aula 2",
-        date: '25/10/2022',
-        idModule: "1"
-    },
-    {
-        id: 'aula 3dddd',
-        name: "aula 3",
-        date: '30/10/2022',
-        idModule: "2"
-    },
-    {
-        id: "addsds",
-        name: "aula 4",
-        date: '05/10/2022',
-        idModule: "2"
-    },
-    {
-        id: "addskk",
-        name: "aula 5",
-        date: '09/12/2022',
-        idModule: "2"
-    }]
+   
+
+    const classes = useStyles()
+
+    // const aulas = setters.setClasse(requests.requestGetClasse(item.id))
+
+    // const aulas = modulos.map((item) => {
+    //     return (
+    //         // <List className={classes.root}>
+    //         //     <ListItem>
+    //         //         * <ListItemText primary={() => setters.setClasse(requests.requestGetClasse(item.id))} />
+    //         //     </ListItem>
+    //         // </List>
+
+    //         setters.setClasse(requests.requestGetClasse(item.id))
+    //     )
+    // })
+
+    // console.log(states.classe)
+    const mapModulos = modulos.map((item) => {
+        return (
+            < Card key={item.id}>
+                <CardHeader
+                    avatar={
+                        <Avatar aria-label="recipe" className={classes.avatar} > M</Avatar>
+                    }
+                    title={item.name}
+                />
+                <CardContent>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        Aproveite esse módulo, e se torne um dev cada vez mais capacitado!
+                    </Typography>
+                </CardContent>
+
+                <CardActions>
+                    <p>Aulas disponíveis</p>
+
+                </CardActions>
+                <List className={classes.root}>
+                    <ListItem>
+                        
+                       {/* * <ListItemText primary={states.classe}  /> */}
+                    </ListItem>
+                </List>
+              
+
+            </Card>
+        )
+    })
+
+
 
 
     return (
         <Container>
             <h3>Olá, seja bem-vindo!</h3>
             <p>Aqui temos vários cursos pra te ajudar a ser um DEV de sucesso! Venha conhecer nossos cursos 💻</p>
-
             <h2>Módulos disponíveis:</h2>
 
-
             <section>
+                {mapModulos}
 
-                <Card className={classes.root}>
-                    <CardHeader
-                        avatar={
-                            <Avatar aria-label="recipe" className={classes.avatar}> M</Avatar>
-                        }
-                        title={'Modulo1'}
-                    />
-
-                    <CardContent>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                            Aproveite esse módulo, e se torne um dev cada vez mais capacitado!
-                        </Typography>
-                    </CardContent>
-
-                    <CardActions disableSpacing>
-                        <p>Aulas disponíveis</p>
-                        <IconButton
-                            className={clsx(classes.expand, {
-                                [classes.expandOpen]: expanded,
-                            })}
-                            onClick={handleExpandClick}
-                            aria-expanded={expanded}
-                            aria-label="show more"
-                        >
-                            <ExpandMoreIcon />
-                        </IconButton>
-                    </CardActions>
-                    <Collapse in={expanded} timeout="auto" unmountOnExit>
-                        <CardContent>
-                            <List className={classes2.root}>
-                                <ListItem alignItems="flex-start">
-
-                                    <ListItemText
-
-                                        primary={"aaaa"}
-                                        secondary={
-                                            <React.Fragment>
-                                                {"25/10/2022"}
-                                            </React.Fragment>
-                                        }
-                                    />
-                                </ListItem>
-                                <Divider variant="inset" component="li" />
-                            </List>
-                        </CardContent>
-                    </Collapse>
-                </Card>
             </section>
         </Container>
     )

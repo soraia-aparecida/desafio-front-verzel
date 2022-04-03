@@ -55,8 +55,6 @@ export const useStyles = makeStyles((theme) => ({
         transform: 'rotate(180deg)',
     },
     avatar: {
-        backgroundColor: "#5cb646",
-
-
+        backgroundColor: "#00a000",
     },
 }));

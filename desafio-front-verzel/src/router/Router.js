@@ -9,6 +9,8 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage"
 import HomePage from "../pages/HomePage/HomePage"
 import LoginPage from "../pages/LoginPage/LoginPage"
 import RegistrePage from '../pages/RegistrePage/RegistrePage'
+import EditClassPage from '../pages/EditClassPage/EditClassPage'
+import EditModulePage from '../pages/EditModulePage/EditModulePage'
 
 const Router = () => {
     return (
@@ -22,6 +24,8 @@ const Router = () => {
                 <Route path={"/cadastrar-modulo"} element={<CreateModulePage />} />
                 <Route path={"/cadastrar-aula"} element={<CreateClassPage />} /> 
                 <Route path={`/aula/:id`} element={<ClassePage />} /> 
+                <Route path={"/editar/aula/:id"} element={<EditClassPage/>}/>
+                <Route path={`/editar/modulo/:id`} element={<EditModulePage/>}/>
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
         </BrowserRouter>

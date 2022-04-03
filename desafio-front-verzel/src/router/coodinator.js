@@ -23,3 +23,6 @@ export const goToClasseByModule= (history, id) => {
     history(`/aula/${id}`)
 }
 
+export const editModule = (history, id) =>{
+    history(`/editar/modulo/${id}`)
+}
