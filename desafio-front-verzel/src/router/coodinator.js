@@ -1,6 +1,9 @@
 export const goToHome = (history) => {
     history("/")
 }
+export const goToHomeClass = (history, id) => {
+    history(`/modulo/aula/${id}`)
+}
 export const goToLogin = (history) => {
     history("/entrar")
 }
@@ -25,4 +28,9 @@ export const goToClasseByModule= (history, id) => {
 
 export const editModule = (history, id) =>{
     history(`/editar/modulo/${id}`)
+}
+
+export const editClass = (history, id) =>{
+    
+    history(`/editar/aula/${id}`)
 }

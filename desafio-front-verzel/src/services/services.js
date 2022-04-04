@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios from "axios"
 import { BASE_URL } from '../constants/url'
-import { corretDate } from "./correctDate";
+import { corretDate } from "./correctDate"
 
 // REQUISIÇÃO PARA LOGAR
 export const login = (body, navigate) => {
@@ -45,10 +45,9 @@ export const createModule = (body) => {
     })
 }
 
-
 //REQUISIÇÃO PARA EDITAR MÓDULO
 export const editModule = (id, body) => {
-    
+
     const url = BASE_URL + `module/edit/${id}`
     const request = axios.put(url, body, {
         headers: {
@@ -92,7 +91,7 @@ export const getClasseByModule = (id, setClasse) => {
         setClasse(res.data.classes)
 
     }).catch((err) => {
-        alert(err.response)
+        console.log(err.response)
     })
 }
 
@@ -121,12 +120,16 @@ export const createClasse = (body) => {
 
 //REQUISIÇÃO PARA EDITAR AULA
 export const editClasse = (id, body) => {
-
-    const token = localStorage.getItem('token')
+    
+    const newBody = {
+        name: body.name,
+        classDate: corretDate(body.classDate)
+    }
+  
     const url = BASE_URL + `classe/edit/${id}`
-    const request = axios.put(url, body, {
+    const request = axios.put(url, newBody, {
         headers: {
-            auth: token
+            Authorization: localStorage.getItem('token')
         }
     })
 
@@ -141,7 +144,6 @@ export const editClasse = (id, body) => {
 export const deleteClasse = (body) => {
 
     const newBody = {id: body}
-
     const url = BASE_URL + `classe/delete`
     const request = axios.delete(url, newBody, {
         headers: {

@@ -9,7 +9,7 @@ import { useProtectedPage } from "../../hooks/useProtectedPage"
 
 const CreateModulePage = () => {
     useProtectedPage()
-    
+
     const { requests } = useContext(GlobalStateContext)
 
     const [form, onChange, cleanFields] = useForm({
@@ -20,11 +20,11 @@ const CreateModulePage = () => {
         event.preventDefault();
         requests.requestCreateModule(form)
         cleanFields()
-    };
-
+    }
 
     const classes = useStyles()
     const navigate = useNavigate()
+    
     return (
         <Container>
             <h1>Castrar novo módulo</h1>

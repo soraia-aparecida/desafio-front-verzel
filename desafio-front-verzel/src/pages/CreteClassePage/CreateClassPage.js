@@ -10,12 +10,12 @@ import GlobalStateContext from "../../context/GlobalStateContext"
 
 const CreateClassPage = () => {
     useProtectedPage()
-    
+
     const classes = useStyles()
     const navigate = useNavigate()
 
     const modulos = useRequestedModule()
-    const {requests} = useContext(GlobalStateContext) 
+    const { requests } = useContext(GlobalStateContext)
 
     const [form, onChange, cleanFields] = useForm({
         name: "",
@@ -26,20 +26,20 @@ const CreateClassPage = () => {
     const mapModule = modulos.map((item) => {
         return (
             <MenuItem value={item.id} key={item.id}>{item.name}</MenuItem>
-     )
+        )
     })
 
     const handleSubmit = (event) => {
         event.preventDefault();
         requests.requestCreateClasse(form)
         cleanFields()
-    };
+    }
 
     return (
         <Container>
             <h1>Castrar nova aula</h1>
-            <form className={classes.root} noValidate onSubmit={handleSubmit}>
 
+            <form className={classes.root} noValidate onSubmit={handleSubmit}>
                 <FormControl variant="outlined" className={classes.margin}>
                     <InputLabel >Módulo</InputLabel>
                     <Select
@@ -52,7 +52,7 @@ const CreateClassPage = () => {
                         <MenuItem value="">
                             <em>None</em>
                         </MenuItem>
-                       {mapModule}
+                        {mapModule}
                     </Select>
                 </FormControl>
 
@@ -66,6 +66,7 @@ const CreateClassPage = () => {
                     onChange={onChange}
                 />
                 <TextField
+                    className={classes.margin}
                     label="Data da aula"
                     variant="outlined"
                     type="date"
@@ -77,6 +78,7 @@ const CreateClassPage = () => {
                 />
                 <Button variant="contained" color="primary" className={classes.withoutLabel} type="submit"> Casdastrar </Button>
             </form>
+            
             <Button color="primary" onClick={() => goToAdminHome(navigate)}>Voltar</Button>
         </Container>
     )

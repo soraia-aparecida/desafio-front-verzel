@@ -1,8 +1,8 @@
 import React from "react"
 import { createGlobalStyle } from 'styled-components'
 import Router from "./router/Router"
-import { ThemeProvider } from "@material-ui/core";
-import theme from "./constants/theme";
+import { ThemeProvider } from "@material-ui/core"
+import theme from "./constants/theme"
 import GlobalState from './context/GlobalState'
 
 const GlobalStyle = createGlobalStyle`

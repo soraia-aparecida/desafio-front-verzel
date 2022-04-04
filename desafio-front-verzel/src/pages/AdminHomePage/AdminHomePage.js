@@ -13,7 +13,7 @@ const AdminHomePage = () => {
     const classes = useStyles()
     const navigate = useNavigate()
 
-    const { states, setters, requests } = useContext(GlobalStateContext)
+    const { requests } = useContext(GlobalStateContext)
     const modulos = useRequestedModule()
 
     const result = modulos.map((item) => {

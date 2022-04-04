@@ -1,15 +1,14 @@
 import React from 'react'
 import { useStyles } from './styled'
 import { AppBar, Toolbar, Typography, Button } from '@material-ui/core'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { goToAdminHome, goToHome, goToLogin } from '../../router/coodinator'
 
 const Header = (id) => {
     const classes = useStyles();
     const navigate = useNavigate()
     const location = useLocation()
-
-    
+  
     const logout = () => {
         localStorage.removeItem('token')
         goToLogin(navigate)

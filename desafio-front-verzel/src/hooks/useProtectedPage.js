@@ -12,5 +12,4 @@ export const useProtectedPage = () => {
             goToLogin(navigate)
         }
     }, [])
-
 }

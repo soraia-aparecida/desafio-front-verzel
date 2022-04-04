@@ -1,15 +1,13 @@
 import React, { useContext, useEffect } from "react"
 import { Container, useStyles } from "./styled"
-import { Button, Card, CardActions, CardContent, Typography } from '@material-ui/core'
-import { goToAdminHome, editClass } from "../../router/coodinator"
+import { Button, Card, CardContent, Typography } from '@material-ui/core'
+import { goToHome } from "../../router/coodinator"
 import { useNavigate, useParams } from "react-router-dom"
-import Header2 from "../../components/Header/Header2"
+import Header3 from "../../components/Header/Header3"
 import GlobalStateContext from "../../context/GlobalStateContext"
 import { useRequestedModule } from "../../hooks/useRequestModule"
-import { useProtectedPage } from "../../hooks/useProtectedPage"
 
-const ClassePage = () => {
-    useProtectedPage()
+const HomeClassPage = () => {
 
     const classes = useStyles()
     const navigate = useNavigate()
@@ -35,14 +33,8 @@ const ClassePage = () => {
                     <Typography gutterBottom variant="h5" >
                         {item.name}
                     </Typography>
-                    <p>Disponível em: {item.classDate}</p>
+                    <h4>Disponível em: {item.classDate}</h4>
                 </CardContent>
-                <CardActions className={classes.cardButton} >
-                    <Button size="small" onClick={() => editClass(navigate, item.id)}>Editar</Button>
-
-                    {/* Ele não deixa exluir uma aula, diz que não estou passando o headers de autorização */}
-                    <Button size="small" onClick={() => requests.requestDeleteClasse(item.id)}>Excluir  </Button>
-                </CardActions>
             </Card>
         )
     })
@@ -52,17 +44,17 @@ const ClassePage = () => {
     return (
         <Container >
             <header>
-                <Header2 />
+                <Header3 />
             </header>
+            
             <h1>{name}</h1>
-
-            <h2>Aulas disponíveis</h2>
+            <h2>Aulas disponíveis: </h2>
             <section>
                 {mapClasse}
             </section>
-            <Button color="primary" onClick={() => goToAdminHome(navigate)}>Voltar</Button>
+            <Button color="primary" onClick={() => goToHome(navigate)} className={classes.cardButton}>Voltar</Button>
         </Container >
     )
 }
 
-export default ClassePage
+export default HomeClassPage

@@ -19,7 +19,7 @@ export const useRequestedModule = () => {
 
     useEffect(() => {
         getModule()
-    }, [])
+    }, [module])
 
     return module
 }

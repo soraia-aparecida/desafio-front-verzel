@@ -8,9 +8,9 @@ import CreateClassPage from "../pages/CreteClassePage/CreateClassPage"
 import ErrorPage from "../pages/ErrorPage/ErrorPage"
 import HomePage from "../pages/HomePage/HomePage"
 import LoginPage from "../pages/LoginPage/LoginPage"
-import RegistrePage from '../pages/RegistrePage/RegistrePage'
 import EditClassPage from '../pages/EditClassPage/EditClassPage'
 import EditModulePage from '../pages/EditModulePage/EditModulePage'
+import HomeClassPage from '../pages/HomeClassPage/HomeClassPage'
 
 const Router = () => {
     return (
@@ -18,7 +18,7 @@ const Router = () => {
           <Header/>
             <Routes>
                 <Route path={"/"} element={<HomePage />} />
-                <Route path={"/cadastro"} element={<RegistrePage />} />
+                <Route path={"/modulo/aula/:id"} element={<HomeClassPage/>}/>
                 <Route path={"/entrar"} element={<LoginPage />} />
                 <Route path={"/admin"} element={<AdminHomePage />} />
                 <Route path={"/cadastrar-modulo"} element={<CreateModulePage />} />

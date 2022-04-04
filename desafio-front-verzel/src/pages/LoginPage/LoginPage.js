@@ -2,16 +2,16 @@ import React, { useContext } from "react"
 import { Container, useStyles } from "./styled"
 import { TextField, IconButton, OutlinedInput, InputLabel, InputAdornment, FormControl, Button } from '@material-ui/core'
 import clsx from 'clsx'
-import { Visibility, VisibilityOff } from '@material-ui/icons';
+import { Visibility, VisibilityOff } from '@material-ui/icons'
 import useForm from '../../hooks/useForm'
 import GlobalStateContext from '../../context/GlobalStateContext'
-import {  useNavigate } from "react-router-dom"
-import { useUnprotectedPage } from "../../hooks/useUnProtectedPage";
+import { useNavigate } from "react-router-dom"
+import { useUnprotectedPage } from "../../hooks/useUnProtectedPage"
 
 const LoginPage = () => {
     useUnprotectedPage()
 
-    const {requests} = useContext(GlobalStateContext) 
+    const { requests } = useContext(GlobalStateContext)
     const classes = useStyles();
     const navigate = useNavigate()
 
@@ -19,9 +19,9 @@ const LoginPage = () => {
         showPassword: false,
     });
 
-    const [form, onChange]= useForm({
-        email:"",
-        password:""
+    const [form, onChange] = useForm({
+        email: "",
+        password: ""
     })
 
     const handleClickShowPassword = () => {
@@ -32,16 +32,15 @@ const LoginPage = () => {
         event.preventDefault();
     };
 
-    const handleSubmit= (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
         requests.requestLogin(form, navigate)
-    };
-
-   
+    }
 
     return (
         <Container>
             <h1>Login</h1>
+
             <form className={classes.root} noValidate onSubmit={handleSubmit}>
                 <TextField
                     type="email"
@@ -52,8 +51,8 @@ const LoginPage = () => {
                     value={form.email}
                     name='email'
                     onChange={onChange}
-
                 />
+
                 <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
                     <InputLabel htmlFor="outlined-adornment-password" required>Senha</InputLabel>
                     <OutlinedInput
