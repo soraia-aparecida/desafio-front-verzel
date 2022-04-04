@@ -6,6 +6,7 @@ import { goToClasseByModule, goToCreateClasse, goToCreateModule, editModule } fr
 import GlobalStateContext from "../../context/GlobalStateContext"
 import { useRequestedModule } from "../../hooks/useRequestModule"
 import { useProtectedPage } from "../../hooks/useProtectedPage"
+import Loading from '../../components/Loading/Loading'
 
 const AdminHomePage = () => {
     useProtectedPage()
@@ -35,17 +36,22 @@ const AdminHomePage = () => {
 
     return (
         <Container >
-            <h1>Painel Admintrativo</h1>
+            {modulos.length > 0 ?
+                <>
+                    <h1>Painel Admintrativo</h1>
 
-            <div className={classes.root}>
-                <Button variant="outlined" color="primary" onClick={() => goToCreateModule(navigate)}>Cadastrar novo módulo</Button>
-                <Button variant="outlined" color="primary" onClick={() => goToCreateClasse(navigate)}> Cadastrar nova aula </Button>
-            </div>
+                    <div className={classes.root}>
+                        <Button variant="outlined" color="primary" onClick={() => goToCreateModule(navigate)}>Cadastrar novo módulo</Button>
+                        <Button variant="outlined" color="primary" onClick={() => goToCreateClasse(navigate)}> Cadastrar nova aula </Button>
+                    </div>
 
-            <h2>Módulos disponíveis</h2>
-            <section>
-                {result}
-            </section>
+                    <h2>Módulos disponíveis</h2>
+                    <section>
+                        {result}
+                    </section>
+                </> : <Loading />
+            }
+
         </Container >
     )
 }

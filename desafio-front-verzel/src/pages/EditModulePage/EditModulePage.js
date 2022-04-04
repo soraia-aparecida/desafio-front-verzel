@@ -8,6 +8,7 @@ import GlobalStateContext from "../../context/GlobalStateContext"
 import { useProtectedPage } from "../../hooks/useProtectedPage"
 import { useRequestedModule } from "../../hooks/useRequestModule"
 import Header2 from "../../components/Header/Header2"
+import Loading from '../../components/Loading/Loading'
 
 const EditModulePage = () => {
     useProtectedPage()
@@ -42,23 +43,28 @@ const EditModulePage = () => {
             <header>
                 <Header2 />
             </header>
-            <h1>Editar nome do módulo: {nameModule}</h1>
+            
+            {modulos.length > 0 ?
+                <>
+                    <h1>Editar nome do módulo: {nameModule}</h1>
 
-            <form className={classes.root} noValidate onSubmit={handleSubmit}>
-                <TextField
-                    className={classes.margin}
-                    label="Novo nome"
-                    variant="outlined"
-                    required
-                    value={form.name}
-                    name='name'
-                    onChange={onChange}
-                />
+                    <form className={classes.root} noValidate onSubmit={handleSubmit}>
+                        <TextField
+                            className={classes.margin}
+                            label="Novo nome"
+                            variant="outlined"
+                            required
+                            value={form.name}
+                            name='name'
+                            onChange={onChange}
+                        />
 
-                <Button variant="contained" color="primary" className={classes.withoutLabel} type="submit"> Editar </Button>
-            </form>
+                        <Button variant="contained" color="primary" className={classes.withoutLabel} type="submit"> Editar </Button>
+                    </form>
 
-            <Button color="primary" onClick={() => goToAdminHome(navigate)}>Voltar</Button>
+                    <Button color="primary" onClick={() => goToAdminHome(navigate)}>Voltar</Button>
+                </> : <Loading />
+            }
         </Container>
     )
 }

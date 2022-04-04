@@ -6,7 +6,8 @@ import { useNavigate, useParams } from "react-router-dom"
 import Header3 from "../../components/Header/Header3"
 import GlobalStateContext from "../../context/GlobalStateContext"
 import { useRequestedModule } from "../../hooks/useRequestModule"
-import OndemandVideoIcon from '@material-ui/icons/OndemandVideo';
+import OndemandVideoIcon from '@material-ui/icons/OndemandVideo'
+import Loading from '../../components/Loading/Loading'
 
 const HomeClassPage = () => {
 
@@ -49,19 +50,24 @@ const HomeClassPage = () => {
                 <Header3 />
             </header>
 
-            <h1>{name}</h1>
+            {states.classe?.length > 0 ?
+                <>
+                    <h1>{name}</h1>
 
-            <QtdClass>
-                <OndemandVideoIcon color="primary" /><p>{qtdClass}</p>
-            </QtdClass>
+                    <QtdClass>
+                        <OndemandVideoIcon color="primary" /><p>{qtdClass}</p>
+                    </QtdClass>
 
-            <h2>Programação </h2>
+                    <h2>Programação </h2>
 
-            <ContainerClass>
-                {mapClasse}
-            </ContainerClass>
+                    <ContainerClass>
+                        {mapClasse}
+                    </ContainerClass>
 
-            <Button color="primary" onClick={() => goToHome(navigate)} className={classes.cardButton}>Voltar</Button>
+                    <Button color="primary" onClick={() => goToHome(navigate)} className={classes.cardButton}>Voltar</Button>
+                </> : <Loading />
+            }
+
         </Container >
     )
 }

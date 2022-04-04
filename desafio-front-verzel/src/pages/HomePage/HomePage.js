@@ -4,6 +4,7 @@ import { Button, Card, CardHeader, CardContent, Avatar, Typography, CardActions 
 import { useRequestedModule } from "../../hooks/useRequestModule"
 import { goToHomeClass } from "../../router/coodinator"
 import { useNavigate } from "react-router-dom"
+import Loading from '../../components/Loading/Loading'
 
 const HomePage = () => {
 
@@ -35,12 +36,17 @@ const HomePage = () => {
 
     return (
         <Container>
+            { modulos.length > 0 ?
+            <>
             <h1>Olá, seja bem-vindo!</h1>
             <h3>Conheça os módulos disponíveis na EmpresaX </h3>
 
             <ContainerClass>
                 {mapModulos}
             </ContainerClass>
+            </> : <Loading/>
+            }
+            
         </Container>
     )
 }
