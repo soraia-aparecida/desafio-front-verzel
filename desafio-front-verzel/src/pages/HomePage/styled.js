@@ -19,7 +19,7 @@ export const Container = styled.div`
     }
 `
 
-export const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles(() => ({
     root: {
         maxWidth: 340,
     },
@@ -29,5 +29,5 @@ export const useStyles = makeStyles((theme) => ({
     },
     avatar: {
         backgroundColor: "#00a000",
-    },
-}));
+    }
+}))

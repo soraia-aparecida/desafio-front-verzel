@@ -1,6 +1,7 @@
 # Projeto Verzel: Front-end
 
 ### Link do Surge: 
+https://desafio-front-verzel-soraia.surge.sh/
 
 ### Dados para login:
 - email: soraia@gmail.com
@@ -28,7 +29,13 @@ Para usuários adminstradores, é possível, cadastrar novos módulos e aulas.
 - API Verzel
 
 ### Imagens
+![image](https://media.discordapp.net/attachments/895788142118969386/960493653225254963/unknown.png?width=765&height=430)
+![image](https://media.discordapp.net/attachments/895788142118969386/960494302855831572/unknown.png?width=765&height=430)
+![image](https://media.discordapp.net/attachments/895788142118969386/960491612813791292/unknown.png?width=765&height=430)
+![image](https://media.discordapp.net/attachments/895788142118969386/960491461995028530/unknown.png?width=765&height=430)
+![image](https://media.discordapp.net/attachments/895788142118969386/960491509029957642/unknown.png?width=765&height=430)
+![image](https://media.discordapp.net/attachments/895788142118969386/960491561920118824/unknown.png?width=765&height=430)
 
 
-### Algo a melhorar:
+### Pontos a melhorar:
 Excluir módulos e aulas. Estou tendo um problema na API, nos endpoints deletar. No Postaman e direto no MySQL, deleta normalmente, mas agora usando o axios, não estou conseguindo deletar. 
