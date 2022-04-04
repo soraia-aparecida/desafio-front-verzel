@@ -15,13 +15,17 @@ export const Container = styled.div`
     },
     h2{
         margin-top: 3vh;
-        margin-bottom: 3vh;
-    },
-    section{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-    },   
+        border-bottom: 3vh;
+    }   
+`
+
+export const ContainerClass = styled.div`
+width: 70%;
+margin-top: 5vh;
+margin-left: 20vw;
+display: flex;
+align-items: center;
+flex-wrap: wrap;
 `
 
 export const useStyles = makeStyles((theme) => ({
@@ -31,12 +35,12 @@ export const useStyles = makeStyles((theme) => ({
         },
     },
     root2: {
-        width: 320,
+        width: 350,
         backgroundColor: '#90ee90',
         margin: theme.spacing(2),
     },
     cardButton: {
-        marginTop: theme.spacing(30)
+        marginTop: theme.spacing(3)
     },
 
 }))

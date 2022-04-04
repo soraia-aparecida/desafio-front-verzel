@@ -16,13 +16,14 @@ export const Container = styled.div`
     h2{
         margin-top: 3vh;
         margin-bottom: 3vh;
-    },
-    section{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-    }
-   
+    }   
+`
+export const ContainerClass = styled.div`
+width: 50%;
+margin-left: 5vw;
+display: flex;
+align-items: center;
+flex-wrap: wrap;
 `
 
 export const useStyles = makeStyles((theme) => ({

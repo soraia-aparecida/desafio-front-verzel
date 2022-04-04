@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react"
-import { Container, useStyles } from "./styled"
+import { Container, useStyles, ContainerClass } from "./styled"
 import { Button, Card, CardActions, CardContent, Typography } from '@material-ui/core'
 import { goToAdminHome, editClass } from "../../router/coodinator"
 import { useNavigate, useParams } from "react-router-dom"
@@ -57,9 +57,9 @@ const ClassePage = () => {
             <h1>{name}</h1>
 
             <h2>Aulas disponíveis</h2>
-            <section>
+            <ContainerClass>
                 {mapClasse}
-            </section>
+            </ContainerClass>
             <Button color="primary" onClick={() => goToAdminHome(navigate)}>Voltar</Button>
         </Container >
     )

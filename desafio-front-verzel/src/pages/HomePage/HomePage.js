@@ -1,5 +1,5 @@
 import React from "react"
-import { Container, useStyles } from "./styled"
+import { Container, useStyles, ContainerClass } from "./styled"
 import { Button, Card, CardHeader, CardContent, Avatar, Typography, CardActions } from '@material-ui/core'
 import { useRequestedModule } from "../../hooks/useRequestModule"
 import { goToHomeClass } from "../../router/coodinator"
@@ -13,7 +13,7 @@ const HomePage = () => {
 
     const mapModulos = modulos.map((item) => {
         return (
-            < Card key={item.id}>
+            < Card key={item.id}  className={classes.root2}>
                 <CardHeader
                     avatar={
                         <Avatar aria-label="recipe" className={classes.avatar} > M</Avatar>
@@ -38,9 +38,9 @@ const HomePage = () => {
             <h1>Olá, seja bem-vindo!</h1>
             <h3>Conheça os módulos disponíveis na EmpresaX </h3>
 
-            <section>
+            <ContainerClass>
                 {mapModulos}
-            </section>
+            </ContainerClass>
         </Container>
     )
 }

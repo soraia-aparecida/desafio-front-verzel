@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react"
-import { Container, useStyles } from "./styled"
+import { Container, useStyles, ContainerClass } from "./styled"
 import { Button, Card, CardContent, Typography } from '@material-ui/core'
 import { goToHome } from "../../router/coodinator"
 import { useNavigate, useParams } from "react-router-dom"
@@ -49,9 +49,9 @@ const HomeClassPage = () => {
             
             <h1>{name}</h1>
             <h2>Aulas disponíveis: </h2>
-            <section>
+            <ContainerClass>
                 {mapClasse}
-            </section>
+            </ContainerClass>
             <Button color="primary" onClick={() => goToHome(navigate)} className={classes.cardButton}>Voltar</Button>
         </Container >
     )

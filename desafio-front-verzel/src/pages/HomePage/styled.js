@@ -12,16 +12,24 @@ export const Container = styled.div`
         margin-top: 5vh;
         margin-bottom: 3vh;
     },
-    section{
+    /* section{
         display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;
-    }
+    } */
+`
+export const ContainerClass = styled.div`
+width: 80%;
+margin-left: 5vw;
+display: flex;
+align-items: center;
+flex-wrap: wrap;
 `
 
-export const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 340,
+        margin: theme.spacing(2),
     },
     media: {
         height: 0,
@@ -29,5 +37,8 @@ export const useStyles = makeStyles(() => ({
     },
     avatar: {
         backgroundColor: "#00a000",
-    }
+    },
+    root2: {
+        margin: theme.spacing(2),
+    },
 }))
