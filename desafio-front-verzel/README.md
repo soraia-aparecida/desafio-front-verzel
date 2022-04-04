@@ -30,11 +30,12 @@ Para usuários adminstradores, é possível, cadastrar novos módulos e aulas.
 
 ### Imagens
 ![image](https://media.discordapp.net/attachments/895788142118969386/960493653225254963/unknown.png?width=765&height=430)
-![image](https://media.discordapp.net/attachments/895788142118969386/960494302855831572/unknown.png?width=765&height=430)
+![image](https://media.discordapp.net/attachments/895788142118969386/960533872947380244/unknown.png?width=765&height=430)
 ![image](https://media.discordapp.net/attachments/895788142118969386/960491612813791292/unknown.png?width=765&height=430)
 ![image](https://media.discordapp.net/attachments/895788142118969386/960491461995028530/unknown.png?width=765&height=430)
 ![image](https://media.discordapp.net/attachments/895788142118969386/960491509029957642/unknown.png?width=765&height=430)
 ![image](https://media.discordapp.net/attachments/895788142118969386/960491561920118824/unknown.png?width=765&height=430)
+![image](https://media.discordapp.net/attachments/895788142118969386/960533975280005210/unknown.png?width=765&height=430)
 
 
 ### Pontos a melhorar:
