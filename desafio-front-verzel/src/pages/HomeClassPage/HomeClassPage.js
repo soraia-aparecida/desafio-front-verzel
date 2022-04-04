@@ -1,11 +1,12 @@
 import React, { useContext, useEffect } from "react"
-import { Container, useStyles, ContainerClass } from "./styled"
+import { Container, useStyles, ContainerClass, QtdClass } from "./styled"
 import { Button, Card, CardContent, Typography } from '@material-ui/core'
 import { goToHome } from "../../router/coodinator"
 import { useNavigate, useParams } from "react-router-dom"
 import Header3 from "../../components/Header/Header3"
 import GlobalStateContext from "../../context/GlobalStateContext"
 import { useRequestedModule } from "../../hooks/useRequestModule"
+import OndemandVideoIcon from '@material-ui/icons/OndemandVideo';
 
 const HomeClassPage = () => {
 
@@ -40,18 +41,26 @@ const HomeClassPage = () => {
     })
 
     const name = filterModule[0]?.name
+    const qtdClass = `${states.classe?.length} aulas`
 
     return (
         <Container >
             <header>
                 <Header3 />
             </header>
-            
+
             <h1>{name}</h1>
-            <h2>Aulas disponíveis: </h2>
+
+            <QtdClass>
+                <OndemandVideoIcon color="primary" /><p>{qtdClass}</p>
+            </QtdClass>
+
+            <h2>Programação </h2>
+
             <ContainerClass>
                 {mapClasse}
             </ContainerClass>
+
             <Button color="primary" onClick={() => goToHome(navigate)} className={classes.cardButton}>Voltar</Button>
         </Container >
     )

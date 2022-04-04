@@ -21,10 +21,20 @@ export const Container = styled.div`
 export const ContainerClass = styled.div`
 width: 50%;
 margin-left: 5vw;
+margin-bottom: 5vh;
 display: flex;
 align-items: center;
 flex-wrap: wrap;
 `
+
+
+export const QtdClass = styled.div`
+display: flex;
+align-items: center;
+margin-bottom: 2v;
+p{
+    margin-left: 0.5vw;
+}`
 
 export const useStyles = makeStyles((theme) => ({
     root: {

@@ -27,6 +27,14 @@ display: flex;
 align-items: center;
 flex-wrap: wrap;
 `
+export const QtdClass = styled.div`
+display: flex;
+align-items: center;
+margin-bottom: 2v;
+p{
+    margin-left: 0.5vw;
+}`
+
 
 export const useStyles = makeStyles((theme) => ({
     root: {

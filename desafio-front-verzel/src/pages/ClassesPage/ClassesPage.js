@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react"
-import { Container, useStyles, ContainerClass } from "./styled"
+import { Container, useStyles, ContainerClass, QtdClass } from "./styled"
 import { Button, Card, CardActions, CardContent, Typography } from '@material-ui/core'
 import { goToAdminHome, editClass } from "../../router/coodinator"
 import { useNavigate, useParams } from "react-router-dom"
@@ -7,6 +7,7 @@ import Header2 from "../../components/Header/Header2"
 import GlobalStateContext from "../../context/GlobalStateContext"
 import { useRequestedModule } from "../../hooks/useRequestModule"
 import { useProtectedPage } from "../../hooks/useProtectedPage"
+import OndemandVideoIcon from '@material-ui/icons/OndemandVideo';
 
 const ClassePage = () => {
     useProtectedPage()
@@ -27,6 +28,8 @@ const ClassePage = () => {
     useEffect(() => {
         setters.setClasse(requests.requestGetClasse(id))
     }, [])
+
+    const qtdClass = `${states.classe?.length} aulas`
 
     const mapClasse = states.classe?.map((item) => {
         return (
@@ -54,9 +57,14 @@ const ClassePage = () => {
             <header>
                 <Header2 />
             </header>
-            <h1>{name}</h1>
 
-            <h2>Aulas disponíveis</h2>
+            <h1>{name}</h1>
+            
+            <QtdClass>
+                <OndemandVideoIcon color="primary" /><p>{qtdClass}</p>
+            </QtdClass>
+
+            <h2>Programação</h2>
             <ContainerClass>
                 {mapClasse}
             </ContainerClass>
