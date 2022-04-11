@@ -157,3 +157,31 @@ export const deleteClasse = (body) => {
         alert(err.response.data)
     })
 }
+
+//REQUISIÇÃO PARA PEGAR AULA POR ID
+export const getClasseById = (id, setClasse) => {
+
+    const url = BASE_URL + `classe/byid/${id}`
+    const request = axios.get(url)
+
+    request.then((res) => {
+        setClasse(res.data.classe)
+
+    }).catch((err) => {
+        alert(err.response.data)
+    })
+}
+
+//REQUISIÇÃO PARA PEGAR MODULO POR ID
+export const getModuleById = (id, setModule) => {
+
+    const url = BASE_URL + `module/${id}`
+    const request = axios.get(url)
+
+    request.then((res) => {
+        setModule(res.data.module)
+
+    }).catch((err) => {
+        alert(err.response.data)
+    })
+}

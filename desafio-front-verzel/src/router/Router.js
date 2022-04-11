@@ -15,17 +15,17 @@ import HomeClassPage from '../pages/HomeClassPage/HomeClassPage'
 const Router = () => {
     return (
         <BrowserRouter>
-          <Header/>
+            <Header />
             <Routes>
                 <Route path={"/"} element={<HomePage />} />
-                <Route path={"/modulo/aula/:id"} element={<HomeClassPage/>}/>
+                <Route path={"/modulo/aula/:id"} element={<HomeClassPage />} />
                 <Route path={"/entrar"} element={<LoginPage />} />
                 <Route path={"/admin"} element={<AdminHomePage />} />
                 <Route path={"/cadastrar-modulo"} element={<CreateModulePage />} />
-                <Route path={"/cadastrar-aula"} element={<CreateClassPage />} /> 
-                <Route path={`/aula/:id`} element={<ClassePage />} /> 
-                <Route path={"/editar/aula/:id"} element={<EditClassPage/>}/>
-                <Route path={`/editar/modulo/:id`} element={<EditModulePage/>}/>
+                <Route path={"/cadastrar-aula"} element={<CreateClassPage />} />
+                <Route path={"/aula/:id"} element={<ClassePage />} />
+                <Route path={"/editar/aula/:id"} element={<EditClassPage />} />
+                <Route path={`/editar/modulo/:id`} element={<EditModulePage />} />
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
         </BrowserRouter>
